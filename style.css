@@ -1,0 +1,666 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+  --pink: #e85f83;
+  --deep-pink: #a9385a;
+  --pale-pink: #fff1f5;
+  --cream: #fffaf7;
+  --ink: #392b34;
+  --muted: #7f6d76;
+  --white: #ffffff;
+  --shadow: 0 16px 40px rgba(117, 50, 77, .12);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 82px; }
+body { margin: 0; background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; line-height: 1.7; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+.navbar { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 14px clamp(18px, 5vw, 72px); background: rgba(255,250,247,.93); border-bottom: 1px solid rgba(232,95,131,.16); backdrop-filter: blur(12px); }
+.brand { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--deep-pink); white-space: nowrap; }
+.navbar nav { display: flex; align-items: center; gap: clamp(10px, 2vw, 26px); font-size: .9rem; }
+.navbar nav a { transition: color .2s ease; }
+.navbar nav a:hover { color: var(--pink); }
+.music-button { border: 1px solid #f1b5c6; background: #fff; color: var(--deep-pink); padding: 8px 13px; border-radius: 999px; cursor: pointer; white-space: nowrap; }
+.music-button:hover, .music-button[aria-pressed="true"] { background: var(--pink); color: white; }
+.hero { min-height: min(690px, 78vh); display: grid; place-items: center; position: relative; text-align: center; color: white; background: url('./images/photo001.jpg') center 42% / cover no-repeat; }
+.hero-shade { position: absolute; inset: 0; background: linear-gradient(110deg, rgba(44,25,43,.57), rgba(91,42,66,.2), rgba(38,28,47,.48)); }
+.hero-content { position: relative; z-index: 1; width: min(900px, 92%); padding: 60px 0; animation: fadeUp .9s ease both; }
+.eyebrow { color: var(--pink); font-size: .75rem; font-weight: 700; letter-spacing: .19em; }
+.hero .eyebrow { color: #ffe4ed; }
+h1, h2 { font-family: 'Playfair Display', Georgia, serif; line-height: 1.2; }
+.hero h1 { font-size: clamp(2.7rem, 7vw, 5.8rem); margin: 14px 0; text-shadow: 0 3px 20px rgba(0,0,0,.22); }
+.hero h1 span { color: #ffd7e3; }
+.hero-subtitle { font-size: clamp(.95rem, 2vw, 1.2rem); margin: 0 0 30px; }
+.primary-button { display: inline-block; border: 0; border-radius: 999px; padding: 12px 23px; background: var(--pink); color: white; cursor: pointer; box-shadow: 0 8px 22px rgba(232,95,131,.24); transition: transform .2s, background .2s; }
+.primary-button:hover { transform: translateY(-2px); background: var(--deep-pink); }
+.section-wrap { padding: clamp(55px, 8vw, 100px) clamp(20px, 8vw, 120px); }
+.counter-section { text-align: center; background: linear-gradient(180deg, #fff0f5, #fff9f7); }
+.counter-section h2, .story-copy h2, .section-heading h2, .letter-card h2, .closing h2 { font-size: clamp(2rem, 4vw, 3.1rem); margin: 8px 0 24px; }
+.counter-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; max-width: 850px; margin: 30px auto 18px; }
+.counter-card { background: rgba(255,255,255,.85); padding: 22px 10px; border: 1px solid #f8d6e0; border-radius: 18px; box-shadow: 0 8px 24px rgba(117,50,77,.06); }
+.counter-card strong { display: block; color: var(--deep-pink); font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.2; }
+.counter-card span { display: block; color: var(--muted); font-size: .88rem; margin-top: 6px; }
+.tiny-note { color: var(--muted); font-style: italic; }
+.story-section { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(35px, 7vw, 90px); }
+.story-copy p:not(.eyebrow) { color: var(--muted); }
+.story-copy h2 span { color: var(--pink); }
+.signature { color: var(--deep-pink) !important; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; }
+.story-note { display: flex; justify-content: center; align-items: center; gap: 12px; padding: 20px 0; }
+.polaroid { width: 47%; max-width: 270px; padding: 10px 10px 18px; background: white; box-shadow: var(--shadow); border-radius: 3px; }
+.polaroid img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; }
+.polaroid span { display: block; text-align: center; font-family: 'Playfair Display', serif; color: var(--muted); padding-top: 10px; font-size: .92rem; }
+.tilt-left { transform: rotate(-6deg); }
+.tilt-right { transform: rotate(5deg) translateY(18px); }
+.gallery-section { background: #fff2f6; }
+.section-heading { text-align: center; margin-bottom: 34px; }
+.section-heading > p:last-child { color: var(--muted); }
+.gallery-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.memory-card { margin: 0; background: white; padding: 10px 10px 17px; box-shadow: var(--shadow); transform: translateY(0); transition: transform .25s; }
+.memory-card:hover { transform: translateY(-6px) rotate(-1deg); }
+.photo-frame { position: relative; width: 100%; aspect-ratio: 4 / 4.5; overflow: hidden; background: linear-gradient(135deg, #ffe2eb, #fff8fa); }
+.memory-card img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--deep-pink); background: linear-gradient(135deg, #ffe2eb, #fff8fa); }
+.photo-placeholder span { font-size: 2.6rem; line-height: 1; }
+.photo-placeholder small { font-size: .82rem; }
+.photo-frame.has-photo .photo-placeholder { display: none; }
+.photo-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.memory-card figcaption { text-align: center; padding: 13px 5px 0; color: var(--deep-pink); font-family: 'Playfair Display', serif; }
+.letter-section { display: grid; place-items: center; background: radial-gradient(ellipse at top, #ffe8ef, #fffaf7 70%); }
+.letter-card { width: min(760px, 100%); padding: clamp(25px, 5vw, 55px); text-align: center; background: rgba(255,255,255,.88); border: 1px solid #f6d1dd; border-radius: 24px; box-shadow: var(--shadow); }
+.letter-intro { color: var(--muted); margin-bottom: 25px; }
+.letter-message { margin-top: 28px; padding: 25px; text-align: left; background: #fff7f9; border-radius: 16px; border: 1px dashed #efb3c5; animation: fadeUp .45s ease both; }
+.letter-message p { margin-top: 0; }
+.letter-message .signature { text-align: right; }
+.edit-tip { font-size: .8rem; color: var(--muted); border-top: 1px solid #f4dce4; padding-top: 12px; }
+.closing { text-align: center; padding-top: 65px; padding-bottom: 70px; }
+.closing-heart { font-size: 3.5rem; color: var(--pink); animation: heartbeat 1.5s ease-in-out infinite; }
+.closing h2 { margin: 8px 0; }
+.closing p { color: var(--muted); }
+footer { padding: 22px; text-align: center; background: #fff0f5; color: var(--deep-pink); font-size: .9rem; }
+.hearts-layer { position: fixed; inset: 0; z-index: 30; pointer-events: none; overflow: hidden; }
+.floating-heart { position: absolute; bottom: -35px; color: #ed7e9d; opacity: .8; animation: floatUp linear forwards; filter: drop-shadow(0 2px 4px rgba(150,50,80,.1)); }
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@keyframes floatUp { from { transform: translateY(0) rotate(0); opacity: 0; } 10% { opacity: .75; } to { transform: translateY(-110vh) rotate(35deg); opacity: 0; } }
+@keyframes heartbeat { 0%, 100% { transform: scale(1); } 15% { transform: scale(1.12); } 30% { transform: scale(1); } 45% { transform: scale(1.08); } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+@media (max-width: 760px) {
+  .navbar { align-items: flex-start; flex-direction: column; gap: 9px; padding: 12px 18px; }
+  .navbar nav { width: 100%; gap: 14px; overflow-x: auto; padding-bottom: 2px; font-size: .82rem; }
+  .music-button { padding: 6px 10px; }
+  .hero { min-height: 590px; min-height: 72svh; background-position: 56% center; }
+  .hero h1 { font-size: clamp(2.5rem, 12vw, 4rem); }
+  .counter-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 450px; }
+  .story-section { grid-template-columns: 1fr; }
+  .story-copy { max-width: 620px; }
+  .story-note { max-width: 520px; margin: 0 auto; }
+  .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 650px; margin: 0 auto; gap: 14px; }
+  .photo-frame { aspect-ratio: 4 / 5; }
+}
+@media (max-width: 420px) {
+  .gallery-grid { grid-template-columns: 1fr; max-width: 360px; }
+}
+@media (max-width: 380px) {
+  .navbar nav { gap: 11px; }
+  .navbar nav a { white-space: nowrap; }
+  .section-wrap { padding-left: 17px; padding-right: 17px; }
+  .counter-card { padding: 18px 7px; }
+  .letter-message { padding: 17px; }
+}
+
+
+/* ===== Romantic Scrapbook Gallery ===== */
+
+.scrapbook-gallery {
+  padding: 75px 20px;
+  background:
+    radial-gradient(ellipse at top left,
+      #ffe4ed 0%, transparent 45%),
+    #fff8fa;
+  overflow: hidden;
+}
+
+.scrapbook-heading {
+  text-align: center;
+  margin-bottom: 45px;
+  color: #a94368;
+}
+
+.heading-heart {
+  display: block;
+  font-size: 36px;
+  color: #d86b91;
+}
+
+.scrapbook-heading h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: normal;
+  margin: 10px 0;
+}
+
+.scrapbook-heading p {
+  color: #a77b8a;
+  font-style: italic;
+}
+
+.heading-decoration {
+  display: block;
+  margin-top: 15px;
+  color: #d58aa3;
+  letter-spacing: 5px;
+}
+
+.scrapbook-grid {
+  width: 100%;
+  max-width: 1050px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 38px 28px;
+  align-items: start;
+}
+
+.memory-card {
+  position: relative;
+  min-width: 0;
+}
+
+/* Slight scrapbook rotation */
+.memory-card:nth-child(3n + 1) .polaroid {
+  transform: rotate(-2deg);
+}
+
+.memory-card:nth-child(3n + 2) .polaroid {
+  transform: rotate(1.5deg);
+}
+
+.memory-card:nth-child(3n) .polaroid {
+  transform: rotate(-1deg);
+}
+
+.polaroid {
+  position: relative;
+  padding: 12px 12px 18px;
+  background: #fff;
+  border: 1px solid #f5e7eb;
+  border-radius: 3px;
+  box-shadow: 0 5px 15px #78405218,
+              0 18px 35px #78405210;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.memory-card:hover .polaroid {
+  transform: translateY(-7px) rotate(0deg);
+  box-shadow: 0 12px 30px #78405225;
+}
+
+.photo-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 4.5;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ffe2eb, #fff8fa);
+}
+
+.memory-card .photo-frame img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  cursor: zoom-in;
+  transition: transform 0.4s ease;
+}
+
+.memory-card:hover .photo-frame img {
+  transform: scale(1.04);
+}
+
+.photo-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #c45f84;
+  background: linear-gradient(135deg, #ffe2eb, #fff8fa);
+}
+
+.photo-placeholder span {
+  font-size: 2.6rem;
+  line-height: 1;
+}
+
+.photo-placeholder small {
+  font-size: 0.82rem;
+}
+
+.photo-frame.has-photo .photo-placeholder {
+  display: none;
+}
+
+
+.polaroid-caption {
+  text-align: center;
+  padding: 14px 3px 0;
+}
+
+.memory-note {
+  margin: 0 0 8px;
+  font-family: Georgia, serif;
+  font-size: clamp(14px, 1.5vw, 18px);
+  font-style: italic;
+  line-height: 1.5;
+  color: #9e4f6d;
+  overflow-wrap: anywhere;
+}
+
+.polaroid-caption time {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #b99aa5;
+}
+
+/* Decorative scrapbook tape */
+.tape {
+  position: absolute;
+  top: -9px;
+  z-index: 2;
+  width: 58px;
+  height: 19px;
+  background: #f6c9d8b8;
+  transform: rotate(-12deg);
+  pointer-events: none;
+}
+
+.tape-left {
+  left: 20px;
+}
+
+.tape-right {
+  right: 20px;
+  transform: rotate(12deg);
+}
+
+/* Scroll reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .scrapbook-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px 20px;
+  }
+
+  .scrapbook-gallery {
+    padding: 55px 16px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .scrapbook-gallery {
+    padding: 42px 12px;
+  }
+
+  .scrapbook-grid {
+    gap: 24px 12px;
+  }
+
+  .polaroid {
+    padding: 7px 7px 12px;
+  }
+
+  .polaroid-caption {
+    padding-top: 10px;
+  }
+
+  .memory-note {
+    font-size: 13px;
+  }
+
+  .polaroid-caption time {
+    font-size: 9px;
+    letter-spacing: 0.5px;
+  }
+
+  .tape {
+    width: 42px;
+    height: 15px;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .polaroid,
+  .memory-card .photo-frame img {
+    transition: none;
+  }
+}
+
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 55px 50px;
+  background: #21131deF;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox-content {
+  margin: 0;
+  max-width: 850px;
+  max-height: 100%;
+  text-align: center;
+}
+
+.lightbox-content img {
+  display: block;
+  max-width: 100%;
+  max-height: 75vh;
+  margin: auto;
+  object-fit: contain;
+  border: 8px solid white;
+  border-bottom-width: 18px;
+  box-shadow: 0 15px 50px #0005;
+}
+
+.lightbox-content figcaption {
+  color: white;
+  margin-top: 15px;
+  font-family: Georgia, serif;
+  font-style: italic;
+}
+
+.lightbox button {
+  position: absolute;
+  border: 0;
+  color: white;
+  background: #ffffff20;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 30px;
+}
+
+.lightbox button:hover {
+  background: #ffffff40;
+}
+
+.lightbox-close {
+  top: 15px;
+  right: 18px;
+}
+
+.lightbox-prev {
+  left: 12px;
+}
+
+.lightbox-next {
+  right: 12px;
+}
+
+@media (max-width: 480px) {
+  .lightbox {
+    padding: 55px 40px;
+  }
+
+  .lightbox-content img {
+    max-height: 70vh;
+  }
+}
+
+
+/* ===== Scrapbook reference-inspired finish ===== */
+.scrapbook-gallery {
+  padding: clamp(34px, 6vw, 76px) clamp(12px, 3vw, 30px);
+  background:
+    radial-gradient(ellipse at 15% 12%, rgba(255, 229, 236, .75), transparent 34%),
+    radial-gradient(ellipse at 88% 85%, rgba(244, 226, 208, .45), transparent 35%),
+    #f4f0eb;
+}
+.scrapbook-paper {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  padding: clamp(20px, 4vw, 46px) clamp(14px, 3.5vw, 42px) clamp(28px, 4vw, 48px);
+  background:
+    linear-gradient(90deg, rgba(120, 100, 80, .025) 1px, transparent 1px),
+    linear-gradient(rgba(120, 100, 80, .02) 1px, transparent 1px),
+    #f8f7f3;
+  background-size: 5px 5px, 5px 5px, auto;
+  box-shadow: 0 18px 50px rgba(65, 48, 43, .12);
+  border: 1px solid rgba(120, 100, 80, .12);
+}
+.scrapbook-heading {
+  margin-bottom: clamp(26px, 4vw, 44px);
+  color: #42403d;
+}
+.scrapbook-heading h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
+  font-size: clamp(25px, 3.4vw, 36px);
+}
+.scrapbook-heading p {
+  color: #8a817b;
+}
+.scrapbook-grid {
+  max-width: 960px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 4vw, 42px) clamp(14px, 3vw, 30px);
+}
+.memory-card {
+  background: transparent;
+}
+.polaroid {
+  padding: clamp(7px, 1.2vw, 12px) clamp(7px, 1.2vw, 12px) clamp(12px, 1.8vw, 19px);
+  background: #fffefa;
+  box-shadow: 0 4px 10px rgba(60, 45, 40, .10), 0 12px 22px rgba(60, 45, 40, .08);
+}
+.photo-frame {
+  aspect-ratio: 1 / 1;
+  background: #e9e2dc;
+}
+.memory-note {
+  color: #4d4946;
+  font-size: clamp(12px, 1.25vw, 15px);
+}
+.polaroid-caption time {
+  color: #6d6660;
+  font-family: Georgia, serif;
+  font-size: clamp(9px, .9vw, 11px);
+  letter-spacing: .4px;
+}
+.tape {
+  top: -7px;
+  width: 48px;
+  height: 17px;
+  background: rgba(201, 73, 78, .88);
+  box-shadow: 0 1px 2px rgba(0,0,0,.08);
+}
+.memory-card:nth-child(3n + 1) .tape { background: rgba(218, 211, 200, .9); }
+.memory-card:nth-child(3n + 2) .tape { background: rgba(191, 53, 60, .86); }
+.memory-card:nth-child(3n) .tape { background: rgba(190, 163, 83, .82); }
+@media (max-width: 768px) {
+  .scrapbook-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 18px; }
+}
+@media (max-width: 420px) {
+  .scrapbook-paper { padding: 22px 10px 28px; }
+  .scrapbook-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 12px; }
+  .polaroid { padding: 6px 6px 10px; }
+  .memory-note { font-size: 11px; }
+  .polaroid-caption time { font-size: 8px; }
+  .tape { width: 34px; height: 13px; }
+}
+
+
+/* ===== Reference layout: each card uses tape OR a wall pin ===== */
+.scrapbook-gallery {
+  padding: clamp(28px, 4vw, 58px) clamp(10px, 2.2vw, 28px);
+  background:
+    radial-gradient(ellipse at 12% 18%, rgba(255,248,238,.65), transparent 34%),
+    radial-gradient(ellipse at 85% 76%, rgba(205,183,162,.22), transparent 36%),
+    repeating-linear-gradient(2deg, rgba(91,70,51,.025) 0 1px, transparent 1px 5px),
+    #e9dfd3;
+}
+.scrapbook-paper {
+  width: min(1450px, 100%);
+  padding: clamp(18px, 3vw, 42px) clamp(10px, 2vw, 30px) clamp(24px, 3vw, 40px);
+  background:
+    radial-gradient(ellipse at 12% 20%, rgba(155,137,119,.07), transparent 25%),
+    radial-gradient(ellipse at 86% 72%, rgba(155,137,119,.06), transparent 30%),
+    repeating-linear-gradient(0deg, rgba(100,82,64,.018) 0 1px, transparent 1px 4px),
+    #f7f3eb;
+  border: 1px solid rgba(112,94,77,.2);
+  box-shadow: 0 3px 5px rgba(48,35,28,.08), 0 22px 44px rgba(48,35,28,.16);
+}
+.scrapbook-grid {
+  width: 100%;
+  max-width: 1280px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 28px) clamp(8px, 1.25vw, 18px);
+}
+.memory-card {
+  position: relative;
+  isolation: isolate;
+  filter: drop-shadow(0 3px 3px rgba(48,35,28,.07));
+}
+.memory-card .polaroid {
+  position: relative;
+  padding: clamp(5px, .65vw, 9px) clamp(5px, .65vw, 9px) clamp(9px, 1vw, 14px);
+  background: #fffefa;
+  border: 1px solid rgba(104,91,78,.16);
+  box-shadow: 0 1px 0 rgba(255,255,255,.95) inset, 0 3px 5px rgba(44,33,26,.08), 0 10px 17px rgba(44,33,26,.10);
+}
+.memory-card .photo-frame { aspect-ratio: 1 / 1; }
+.memory-card .polaroid-caption { padding-top: 7px; }
+.memory-card .memory-note { font-size: clamp(9px, .82vw, 12px); line-height: 1.25; margin-bottom: 4px; }
+.memory-card .polaroid-caption time { display: block; font-size: clamp(8px, .72vw, 10px); color: #6d6660; letter-spacing: .2px; }
+
+/* Default cards use a small rounded wall pin. */
+.memory-card::before {
+  content: "";
+  position: absolute;
+  z-index: 8;
+  top: -7px;
+  left: 50%;
+  width: 13px;
+  height: 13px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, #fff9d8 0 7%, transparent 22%),
+              radial-gradient(circle at 38% 30%, #e8d18c 0, #b79a50 40%, #826936 78%, #5c4728 100%);
+  box-shadow: 0 2px 2px rgba(40,28,20,.25), inset 0 1px 2px rgba(255,255,255,.7);
+}
+
+/* Alternate the decorations: even cards have tape, odd cards have pins. */
+.memory-card:nth-child(even)::before { display: none; }
+.memory-card:nth-child(odd) .tape { display: none; }
+
+.memory-card .tape {
+  position: absolute;
+  display: block;
+  z-index: 9;
+  top: -8px;
+  left: 50%;
+  right: auto;
+  width: 44%;
+  min-width: 30px;
+  max-width: 58px;
+  height: 15px;
+  transform: translateX(-50%) rotate(-2deg);
+  opacity: .94;
+  border: 1px solid rgba(105,83,72,.12);
+  box-shadow: 0 1px 2px rgba(49,34,27,.12), inset 0 1px 1px rgba(255,255,255,.35);
+  background-image:
+    repeating-linear-gradient(174deg, transparent 0 4px, rgba(255,255,255,.16) 4px 5px, transparent 5px 8px),
+    linear-gradient(90deg, rgba(255,255,255,.16), transparent 28%, rgba(92,61,45,.07) 62%, rgba(255,255,255,.12));
+  clip-path: polygon(
+    0% 8%, 9% 3%, 16% 8%, 24% 1%, 32% 7%, 42% 2%,
+    51% 7%, 61% 1%, 69% 6%, 78% 2%, 87% 8%, 100% 4%,
+    97% 91%, 89% 96%, 80% 91%, 70% 99%, 61% 93%,
+    50% 98%, 40% 92%, 31% 97%, 21% 92%, 11% 98%, 2% 91%
+  );
+}
+.memory-card:nth-child(4n + 2) .tape { transform: translateX(-50%) rotate(2deg); }
+.memory-card:nth-child(3n + 1) .tape { background-color: rgba(220,211,197,.9); }
+.memory-card:nth-child(3n + 2) .tape { background-color: rgba(177,51,55,.88); }
+.memory-card:nth-child(3n) .tape { background-color: rgba(196,174,113,.9); }
+.memory-card .tape::after {
+  content: "";
+  position: absolute;
+  inset: 2px 5px;
+  background: linear-gradient(165deg, transparent 0 27%, rgba(255,255,255,.28) 29%, transparent 35%),
+              linear-gradient(8deg, transparent 0 57%, rgba(74,48,38,.10) 60%, transparent 66%);
+  opacity: .8;
+  pointer-events: none;
+}
+
+/* Slightly rotated cards, like photos attached by hand. */
+.memory-card:nth-child(6n + 1) .polaroid { transform: rotate(-2deg); }
+.memory-card:nth-child(6n + 2) .polaroid { transform: rotate(1.7deg); }
+.memory-card:nth-child(6n + 3) .polaroid { transform: rotate(-1deg); }
+.memory-card:nth-child(6n + 4) .polaroid { transform: rotate(1.3deg); }
+.memory-card:nth-child(6n + 5) .polaroid { transform: rotate(-1.5deg); }
+.memory-card:nth-child(6n) .polaroid { transform: rotate(.8deg); }
+.memory-card:hover .polaroid {
+  transform: translateY(-3px) rotate(0deg);
+  transition: transform .22s ease, box-shadow .22s ease;
+  box-shadow: 0 1px 0 rgba(255,255,255,.95) inset, 0 7px 12px rgba(44,33,26,.10), 0 18px 24px rgba(44,33,26,.14);
+}
+@media (max-width: 1100px) {
+  .scrapbook-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .scrapbook-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px 12px; }
+  .memory-card .memory-note { font-size: 10px; }
+}
+@media (max-width: 480px) {
+  .scrapbook-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 12px; }
+  .scrapbook-paper { padding: 20px 9px 26px; }
+  .memory-card .polaroid { padding: 5px 5px 9px; }
+  .memory-card .memory-note { font-size: 10px; }
+  .memory-card .polaroid-caption time { font-size: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .memory-card:hover .polaroid { transition: none; }
+}

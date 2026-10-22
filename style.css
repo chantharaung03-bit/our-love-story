@@ -22,7 +22,7 @@ button { font: inherit; }
 .navbar nav a:hover { color: var(--pink); }
 .music-button { border: 1px solid #f1b5c6; background: #fff; color: var(--deep-pink); padding: 8px 13px; border-radius: 999px; cursor: pointer; white-space: nowrap; }
 .music-button:hover, .music-button[aria-pressed="true"] { background: var(--pink); color: white; }
-.hero { min-height: min(690px, 78vh); display: grid; place-items: center; position: relative; text-align: center; color: white; background: url('./images/photo001.jpg') center 42% / cover no-repeat; }
+.hero { min-height: min(690px, 78vh); display: grid; place-items: center; position: relative; text-align: center; color: white; background: url('./photo001.jpg') center 42% / cover no-repeat; }
 .hero-shade { position: absolute; inset: 0; background: linear-gradient(110deg, rgba(44,25,43,.57), rgba(91,42,66,.2), rgba(38,28,47,.48)); }
 .hero-content { position: relative; z-index: 1; width: min(900px, 92%); padding: 60px 0; animation: fadeUp .9s ease both; }
 .eyebrow { color: var(--pink); font-size: .75rem; font-weight: 700; letter-spacing: .19em; }
